@@ -46,7 +46,7 @@ def get_page_links():
 def get_product_links():
     for page_link in page_links:
         driver.get(page_link)
-        time.sleep(3)
+        time.sleep(13)
         mainblock = driver.find_element(By.CLASS_NAME, 's-main-slot')
         product_array = mainblock.find_elements(By.CSS_SELECTOR, '.a-link-normal.s-no-outline')
         for product in product_array:
@@ -62,7 +62,7 @@ def get_product_info():
     for product in product_links:
         driver.get(product)
         time.sleep(3)
-        mainblock = driver.find_element(By.CLASS_NAME, 'ppd')
+        mainblock = driver.find_element(By.ID, 'ppd')
 
         product_title = mainblock.find_element(By.ID, 'productTitle')
         print(product_title)
@@ -83,10 +83,12 @@ def get_product_info():
         for product_image in product_images:
             image_link = product_image.find_element(By.TAG_NAME, 'img').get_attribute('src')
             print(image_link)
+
+        
 if __name__ == '__main__':
     
     get_product_links()
-
+    get_product_info()
 
 
 
